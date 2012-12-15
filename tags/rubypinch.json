@@ -1,0 +1,13 @@
+{
+"/onepinchy": ["+coin", "+rubypinch"],
+"/pinchytrot": ["+animote", "+rubypinch"],
+"/rubyblush": ["+rubypinch"],
+"/rubyhappy": ["+rubypinch"],
+"/rubyhugs": ["+rubypinch"],
+"/rubyplay": ["+rubypinch"],
+"/rubysad": ["+rubypinch"],
+"/rubysoawesome": ["+rubypinch"],
+"/rubysoon": ["+rubypinch"],
+"/rubystare": ["+v"],
+"/rubytrot": ["+animote", "+rubypinch"]
+}

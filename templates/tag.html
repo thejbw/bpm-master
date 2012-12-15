@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>BetterPonymotes Emote Tagger</title>
+  <link href="{{url_for("static", filename="css/bootstrap.css")}}" rel="stylesheet">
+  <link href="{{url_for("static", filename="css/tagapp.css")}}" rel="stylesheet">
+  <link href="{{url_for("css", source_name=urlquote(source.name))}}" rel="stylesheet">
+  <script src="{{url_for("static", filename="js/jquery-1.8.2.js")}}" type="text/javascript"></script>
+  <script src="{{url_for("static", filename="js/tagger.js")}}" type="text/javascript"></script>
+  <script>
+    var tags = {{tags|safe}};
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="span8 offset2">
+        <h2>Tagging {{source.name}}</h2>
+
+        <form action="{{url_for("write", source_name=urlquote(source.name))}}" method="post" id="save">
+          <legend>Save</legend>
+          <label>Magic button: <button class="btn" type="submit">Save</button></label>
+          <input type="hidden" name="tags" id="tags">
+        </form>
+
+        <form class="form-inline">
+          <legend>Batch Regexp Tag</legend>
+          <label>Regexp: <input type="text" id="batch-regexp"></label>
+          <label>Tag: <input type="text" id="batch-tag"></label>
+          <button class="btn" type="button" id="batch-go">Tag</button>
+          <input type="hidden">
+        </form>
+
+        {% for (szinfo, emotes) in given_emotes -%}
+          <!-- {{szinfo|safe}} -->
+          {%- for emote in emotes -%}
+        <div class="row emote">
+          <span class="image {{emote.base_variant().selector()[1:]}}"></span>
+          <div class="emote-list-container">
+            <code class="name">{{emote.name}}</code>
+            {% for tag in sorted(emote.tags) -%}
+            <span class="listed-emote {{"v" if tag == "+v" else ""}}">{{tag}} <a href="#" class="x" tagindex="0">x</a></span>
+            {% endfor -%}
+            <input class="emote-list-input" tabindex="1">
+          </div>
+        </div>
+          {%- endfor %}
+        <hr>
+        {% endfor -%}
+
+        <a href="#top"><h2>Top</h2></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+/*******************************************************************************
+**
+** Copyright (C) 2012 Typhos
+**
+** This Source Code Form is subject to the terms of the Mozilla Public
+** License, v. 2.0. If a copy of the MPL was not distributed with this
+** file, You can obtain one at http://mozilla.org/MPL/2.0/.
+**
+*******************************************************************************/
+
+/*
+ * CSS for the addon itself.
+ */
+
+/* Placeholders */
+
+.bpm-unknown, .bpm-disabled, .bpm-nsfw {
+    /* Behave like normal emotes do */
+    display: block;
+    float: left;
+    /* Need !important tags to override Reddit and emote CSS. */
+    color: black !important;
+    border: solid thin black;
+    font-family: monospace;
+    padding: 3px;
+    margin: 1px; /* Don't run lines of them together */
+    border-radius: 4px;
+    height: auto !important;
+    width: auto !important;
+}
+
+.bpm-disabled, .bpm-disabled:before, .bpm-disabled:after, .bpm-disabled:hover, .bpm-disabled:active,
+.bpm-nsfw, .bpm-nsfw:before, .bpm-nsfw:after, .bpm-nsfw:hover, .bpm-nsfw:active {
+    /*
+     * These two classes are used to shut emotes down, so in the interests of
+     * working even in the emote's native subreddit, we try to override anything
+     * else.
+     *
+     * Unfortunately, we still lose if the subreddit uses !important, but
+     * there's not much we can do about that.
+     */
+    background-image: none !important;
+}
+
+.bpm-hidden, .bpm-hidden:before, .bpm-hidden:after, .bpm-hidden:hover, .bpm-hidden:active {
+    /*
+     * Similar- but we don't even show the placeholder.
+     */
+    background-image: none !important;
+    width: 0px !important;
+    height: 0px !important;
+    display: none !important;
+}
+
+/* Unknown emote placeholder. Transparent red background */
+.bpm-unknown {
+    background-color: hsla(0, 100%, 50%, 0.3);
+}
+
+/* NSFW emote placeholder. Doesn't look too great in night mode, unfortunately */
+.bpm-nsfw {
+    color: white !important;
+    background-color: black !important;
+}
+
+/* Alt-text display. */
+.bpm-alttext {
+    color: grey;
+}
+
+/* Click blocker */
+.bpm-emote, .bpm-unknown {
+    cursor: default;
+}
+
+/*
+ * Added to <body> when dragging things around. This works pretty well in
+ * Firefox and Chrome, and the ::selection bit makes it work a little better
+ * in Opera.
+ */
+.bpm-noselect {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none; /* Doesn't exist */
+}
+.bpm-noselect::selection {
+    background-color: transparent;
+}
+.bpm-noselect::-moz-selection {
+    background-color: transparent;
+}
+
+/*
+ * Emote search CSS
+ *
+ * WARNING: due to my lack of CSS skills, there are many width/height values
+ * here that cannot be changed without editing corresponding JS. See, primarily,
+ * the resizing code in bpm.js that hardcodes minimum values and offsets.
+ */
+
+/* "emotes" button */
+.bpm-search-toggle {
+    margin: 0 0px 0 5px !important;
+}
+
+/* Container */
+#bpm-sb-container {
+    position: fixed;
+
+    /* These four values are reset in JS immediately, so effectively ignored */
+    width: 620px;
+    height: 450px;
+    top: 25px;
+    left: 600px;
+    padding: 5px 5px 0px 5px;
+
+    background-color: #E8E8E8;
+    border: thin solid black;
+    /*
+     * It'd be nice to hide under RES's console dropdown, but there's too many
+     * things we need to override to be nice like that.
+     */
+    z-index: 43112609; /* P sub 47 */
+    visibility: hidden;
+}
+
+/* Top row widget container */
+#bpm-sb-toprow {
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+/* Top-left drag box */
+#bpm-sb-dragbox {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    float: left;
+
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAC9SURBVEjHY2BgYPg/QHiALQYCBnrgoWsxEHiCMF0tBgJWIL4Oxaz0tLgAyYB8ulgMBCJA/B7JABBbhB4WT8OSNabRM3FRpG/UYnRF4kA8l1SLQXpAekm2GJpPS4D4Ix7D/xOQA+ktRs/nOC0GAi8gvknFygBklhcxFntCSyRqWXwduWglJqjzYQUFmUH9HlrCsZKTuERwFQ4E9E3DVZqN5uPBb/GAVRIDVi0OWENgQJs+A9bYGx7t6hHTdwIA/NWecKA2C2UAAAAASUVORK5CYII=");
+}
+
+/* Search input */
+#bpm-sb-input {
+    border-width: 2px;
+    height: 18px;
+    width: 240px;
+    padding: 5px;
+    float: left;
+
+    margin-right: 5px; !important;
+    box-sizing: initial; /* Fix for Chrome, which get the size wrong */
+}
+
+/* Result count element */
+#bpm-sb-resultinfo {
+    height: 30px;
+    float: left;
+
+    color: gray;
+    font-style: italic;
+    font-weight: lighter;
+    line-height: 30px; /* Ugly way to vertically center text */
+}
+
+/* Close button */
+#bpm-sb-close {
+    width: 30px;
+    height: 30px;
+    float: right;
+
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACWSURBVEjH7dcxDoAgDAXQDhyROzJwREiQ4bsQLAjGH2NJ/tb4DFBQEZFCChmuQ96IwQa3xa4m1HilxqPGPQIDjahLPRxoQk3U8Cm4QUsPb9AywmfhcNH8CWAPPRN2YO3BGbl8sd011vBb6MqunsVVdKmPgWcFzSP0OzBlqimbi9ZOzAOEc2TSLgnqtWifPgZvw7/5dzoAyDAWKt02AB4AAAAASUVORK5CYII=");
+}
+
+/* Search result container */
+#bpm-sb-results {
+    height: 388px; /* #bpm-search-box - 62 */
+    width: -webkit-calc(100% - 8px); /* Fit inside padding */
+    width: calc(100% - 8px);
+    padding: 4px !important;
+    float: left;
+
+    background-color: white;
+    font-size: xx-small;
+    font-family: monospace;
+    overflow-y: auto;
+    word-wrap: break-word; /* Makes emote names a bit nicer */
+}
+
+#bpm-sb-bottomrow {
+    height: 20px; /* Fit in the margins */
+    float: left;
+    width: 100%;
+}
+
+/* Help hover */
+#bpm-sb-help-hover {
+    height: 20px;
+    margin-left: 4px;
+    float: left;
+
+    line-height: 20px;
+}
+#bpm-sb-help-hover:hover > #bpm-sb-help {
+    display: block;
+}
+
+/* Actual help box */
+#bpm-sb-help {
+    padding: 4px;
+    position: absolute;
+
+    background-color: white;
+    border: 2px solid #D0D0D0;
+    display: none;
+}
+
+/* Bottom-right resize box */
+#bpm-sb-resize {
+    width: 20px;
+    height: 20px;
+    margin-right: -6px;
+    float: right;
+
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACcSURBVDjLzdQxCoAwDAXQjOJmF1GvpSdzUU8iiHdSd9EvROhQMGkUDPzF0EehMUREx8v5CESRJUEQNSE90iDuDbDzGvuFW8Haa2xIaQUzvtnC32ckjQa50SI5MmrQx1dGJRpUNDYaVDyHUlQ12BJU/acE0AoZosEAuvGIuWiQDxbI6gGNFRz4ZjfQm0A+7HiBXItkMoOisfntxj4BkxXf5wPylQcAAAAASUVORK5CYII=");
+}
+
+/* Emote search result */
+.bpm-search-result {
+    margin: 1px;
+    display: inline-block;
+
+    border: solid black thin;
+}
+
+/* Global << icon thingy */
+#bpm-global-icon {
+    width: 40px;
+    height: 24px;
+
+    /* Hide at the bottom */
+    position: fixed;
+    left: 16px;
+    top: 15px;
+
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAYCAYAAACIhL/AAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK9SURBVEjHzdc/SGpRHAdw+0OmFrg0hCJKixAhEg7R0GJLCCpJRPRnSkKC0ECcmoqWBolARQgaBBFRJNAlCFpqeA0lvaIl0KIIGhyiUvH7/N26l3vfI5736uP5gwNH5Z7z8Z7zO/yODICsHu56y9cb2qSRxf1lk3naCPZ7I5vsJ33Y2dlBpVLB/w4ykOULSLZPbblcRrsEWXhv8bPDxtLSEm5vb5ueZHNzE9lsVvLz3wKp39XVhYWFBdzc3EiewOFwMGNZLBYcHh62DtjX18f92NnZibm5OVxfX4uegP4gf8OPjo4ik8k0D3x5ecHGxgbUarUAOjs7i6urq4YnqFariMViGB4eFkDNZjPS6TRqtZo0IBulUgnb29sYGBgQQGdmZpDP5xuGEiSVSjFvkA81mUxIJpPfQv8KZOP19RXBYBAajYZ7qKOjA9PT07i4uBC17LlcDuPj4wLoyMgIEonEH9CGgWx8fHwgHA7DYDAIoE6nUzT0+PgYVqtVAKWtEI/HpQP5B+nBwQGMRiM3iN1ul5TpZ2dnsNlsAmjTQIrLy0u4XK6mgWxCqlSq1gDPz8+Z842Wln1ucHCQyVYx8fz8jEAggP7+fm6cnp4erKysSAOenp5iampKsBSUNLu7u3h7e2sY9vj4CJ/PB6VSyY0jl8vh8XhQKBTEJ8nJyQkmJycFMK1Wi729Pby/vzcMKxaLWF1dRW9vLzcO9em7+/t78cfM0dERJiYmBDCdTodQKMRkc6Nxd3cHt9vNLB8ftra2hoeHB2kH9djYmACm1+sRiUREwSi2trbQ3d3NjaNQKOD1epllbrpYoEbnXTQalVyGscUC7bf19XU8PT21plgYGhrC/v5+08Xr/Pw8/H4/k7EtKbfELuG/DLLwgcxlifZMOyDJQBbe5Um23MaXpmXZ19Vusd5+tBGMLItk+wX8pY1lHbB+/AAAAABJRU5ErkJggg==");
+
+    /* On top of most things */
+    z-index: 524287;
+}
+
+/* Misc emote flags, stolen from various subreddits. */
+
+/* Don't remove this from here, as global emotes depends on it */
+.bpflag-in, .bpflag-inp {
+    float: none !important;
+    display: inline-block !important
+}
+
+.bpflag-ar {
+    float: right !important
+}
+
+.bpflag-blink_excl_ {
+    text-decoration: blink !important
+}
+
+.bpflag-comicsans_excl_ {
+    font-family: "Comic-Sans MS", cursive
+}
+
+.bpflag-impact_excl_ {
+    font-family: Impact, Charcoal, sans-serif
+}
+
+.bpflag-tahoma_excl_ {
+    font-family: Tahoma, Geneva, sans-serif
+}
+
+/* Basic filters */
+.bpflag-i {
+    -webkit-filter: hue-rotate(180deg); /* Chrome */
+    /* Firefox: handled in bpm.js due to problems */
+    /* Opera: ??? neither of these approaches work */
+}
+
+/*
+ * Some SFW portions of combiners. They are included here so that
+ * combiners-nsfw.css can be disabled with the NSFW option.
+ */
+
+/* lickiepie */
+.bpmote-lickiepie.bpflag-combine + a {
+    position: relative;
+    left: -220px;
+    top: 127px;
+    margin-right: -220px
+    }
+/* tableflip */
+.bpmote-emptytable.bpflag-combine {
+    z-index: 2;
+    position: relative
+    }
+.bpmote-emptytable.bpflag-combine + a {
+    z-index: 1;
+    position: relative;
+    margin-right: -999px;
+    margin-bottom: -999px;
+    left: -120px;
+    top: 20px;
+    max-height: 119px
+    }
+/* fixes */
+/*
+ * BPM NOTE: The /pp* refers to the pinkiepipes stuff from r/mlbannertest. I
+ * can't do much to make this nicer.
+ */
+.bpmote-emptytable.bpflag-combine + a[href^="/pp"].bpflag-combine + a {
+    width: 150px;
+    position: relative;
+    left: 14px;
+    top: 5px
+    }

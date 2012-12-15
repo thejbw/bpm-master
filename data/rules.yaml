@@ -1,0 +1,243 @@
+################################################################################
+##
+## Copyright (C) 2012 Typhos
+##
+## This Source Code Form is subject to the terms of the Mozilla Public
+## License, v. 2.0. If a copy of the MPL was not distributed with this
+## file, You can obtain one at http://mozilla.org/MPL/2.0/.
+##
+################################################################################
+
+Subreddits:
+- adviceponies
+- ainbowdash
+- applebloom
+- applejack
+- beautybrass
+- berrytubelounge
+- clopclop
+- cuttershy
+- dashiemotes
+- daylightemotes
+- desktopponies
+- falloutequestria
+- flitter
+- flutterlounge
+- futemotes
+- gallopfrey
+- gremotes
+- himntor
+- idliketobeatree
+- ilovedashie
+- lyra
+- minuette
+- mlas1animotes
+- mlas1emotes
+- mlas1emotes2
+- mlas1imagedump
+- mlas1party
+- mlhfis
+- mlpdrawingschool
+- mlplounge
+- mlpvectors
+- molestia
+- mylittlealcoholic
+- mylittleandysonic1
+- mylittleanhero23
+- mylittleanime
+- mylittleaprilfools
+- mylittlebannertest
+- mylittlecelestias
+- mylittlechaos
+- mylittlecirclejerk
+- mylittlecombiners
+- mylittleconspiracy
+- mylittledamon
+- mylittledaww
+- mylittledramaticstory
+- mylittlefoodmanes
+- mylittlefortress
+- mylittlekindle
+- mylittlelistentothis
+- mylittlelivestream
+- mylittlemotorhead
+- mylittlemusician
+- mylittlenanners
+- mylittlenopenopenope
+- mylittlenosleep
+- mylittlensfw
+- mylittleonions
+- mylittlepony
+- mylittleserver
+- mylittlesh
+- mylittlesports
+- mylittlesquidward
+- mylittlesupportgroup
+- mylittletacos
+- mylittlewarhammer
+- mylittlewelcomewagon
+- mylittlewtf
+- octavia
+- pankakke
+- pinkiepie
+- ploungemafia
+- ponyanarchism
+- roseluck
+- rubypinch
+- sapphirestone
+- seriouslyluna
+- spaceclop
+- speedingturtle
+- surprise
+- tacoshy
+- tbpimagedump
+- thebestpony
+- twilightsparkle
+- vinylscratch
+
+Extraction:
+  mlplounge:
+    RespectIgnore: false
+  mylittleserver:
+    RespectIgnore: false
+
+Generation:
+  # Fix /rcrossfire not actually being reversed
+  - [AddCSS, r/mlas1emotes, /rcrossfire, "", {"-moz-transform": scaleX(-1), "-webkit-transform": scaleX(-1), "-o-transform": scaleX(-1), transform: scaleX(-1)}]
+
+  # r/mlp removed these, so put them back as a compat hack
+  - - MergeEmotes
+    - r/mylittlepony
+    - /rdsad:
+        Emotes:
+          "":
+            Image: http://a.thumbs.redditmedia.com/mSf8dSjbL0eTzDg0.png
+            Offset: [-140, -350]
+            Size: [70, 70]
+      /rrdsad:
+        Emotes:
+          "":
+            Image: http://e.thumbs.redditmedia.com/IhA4lCp2kZh1YHZv.png
+            Offset: [-140, -350]
+            Size: [70, 70]
+    - /rdsad: [+drop, +hidden, +v]
+      /rrdsad: [+drop, +v]
+
+  # Removed
+  - - MergeEmotes
+    - r/mylittleandysonic1
+    - /today:
+        Emotes:
+          "":
+            Image: http://d.thumbs.redditmedia.com/dN7SE1I0H0ul7jP-.png
+            Offset: [0, 0]
+            Size: [500, 270]
+      /imamakethisanemoterealquick:
+        Emotes:
+          "":
+            Image: http://e.thumbs.redditmedia.com/reUrhLuICVFtwobp.png
+            Offset: [0, 0]
+            Size: [456, 304]
+      /buzzkillturtle:
+        Emotes:
+          "":
+            Image: http://f.thumbs.redditmedia.com/qi35qdw2_kvnMUcq.png
+            Offset: [0, 0]
+            Size: [621, 511]
+      /horseporn:
+        Emotes:
+          "":
+            Image: http://f.thumbs.redditmedia.com/qi35qdw2_kvnMUcq.png
+            Offset: [0, 0]
+            Size: [621, 511]
+    - /today: [+pinkiepie, +animote]
+      /imamakethisanemoterealquick: [+shrug]
+      /buzzkillturtle: [+nsfw, +pinkiepie, +derpy]
+      /horseporn: [+v]
+
+  # Removed
+  - - MergeEmotes
+    - r/mylittlewtf
+    - /raeptime:
+        Emotes:
+          "":
+            Image: http://thumbs.reddit.com/t5_2sy9j_3.png
+            Offset: [0, 0]
+            Size: [422, 473]
+      /drama:
+        Emotes:
+          "":
+            Image: http://thumbs.reddit.com/t5_2sy9j_5.png
+            Offset: [0, 0]
+            Size: [433, 298]
+    - /raeptime: [+rainbowdash]
+      /drama: [+rarity]
+
+  # Edited version- original is broken
+  - - MergeEmotes
+    - r/mylittlesh
+    - /rscheer:
+        Emotes:
+          "":
+            Image: http://d.thumbs.redditmedia.com/3hErANn4rqVDeXao.png
+            Offset: [0, 0]
+            Size: [175, 175]
+    - /rscheer: [+ocpony]
+
+Sorting:
+- [r/mylittlepony, "*"] # Not actually used, but a good failsafe
+- [r/mylittleandysonic1, "*"] # These three rules resolve a lot of things
+- [r/mlas1emotes, "*"]        # implicitly, which is unfortunate, but generally
+- [r/mlas1animotes, "*"]      # correct.
+- [r/futemotes, r/gremotes]         # r/gremotes contains copies of /fut*
+- [r/futemotes, r/ponyanarchism]    # More copies of /fut*
+- [r/idliketobeatree, r/ainbowdash] # /rd* conflicts
+- [r/mylittlemusician, r/mylittlelistentothis] # Copies of some emotes
+
+Conflicts:
+  /abwant:      r/mylittlelivestream    # Conflict with r/applebloom
+  /abworry:     r/tbpimagedump          # Conflict with r/mlpdrawingschool
+  /dw01:        r/daylightemotes        # Conflict with r/gallopfrey
+  /evilhom3r:   r/mylittlewtf           # Duplicated to r/mylittlecirclejerk
+  /hugs:        r/mylittledaww          # Conflict with r/mylittlecirclejerk
+  /ovenmitt:    r/ainbowdash            # Conflict with r/mylittledramaticstory
+  /ppnervous:   r/pinkiepie             # Conflict with r/mlpdrawingschool
+  /rabwant:     r/mylittlelivestream    # Conflict with r/applebloom
+  /rwoonajuice: r/mylittledaww          # Duplicated to r/mylittleanime
+  /s:           r/falloutequestria      # Conflict with r/mylittleanime
+  /sadlyra:     r/mylittleonions        # Conflict with r/mylittleanime
+  /sbf:         r/mylittlewtf           # Duplicated to r/mylittledramaticstory
+  /shrug:       r/vinylscratch          # Conflict with r/mylittlecirclejerk
+  /sphlyrafun:  r/mylittlensfw          # Conflict with r/mylittlechaos
+  /t18:         r/mylittlefoodmanes     # Conflict with r/tacoshy
+  /twipoker:    r/mylittlewtf           # Conflict with r/thebestpony
+  /woonajuice:  r/mylittledaww          # Duplicated to r/mylittleanime
+
+RootVariantEmotes:
+  r/mylittleanime:
+    # Broken
+    /chi21: /sailortwi
+    /chi22: /chubbyrar
+    #/chi23: /evilbelle # /evilbelle itself is broken, so this is just tagged for now
+    /chi24: /woonajuice
+    /chi25: /nurse
+  r/mylittlecelestias:
+    # Unusual- /lr instead of /rl
+    /lrce00: /lcefilly
+    /lrce01: /lcewat
+    /lrce03: /lcesilence
+    /lrce04: /lcehappy
+    /lrce05: /lcehail
+    /lrce06: /lcescroll
+    /lrce07: /lcesurprised
+    /lrce10: /lce10
+    /lrce11: /lcebattle
+    /lrcebattle: /lcebattle
+    /lrcefilly: /lcefilly
+    /lrcehail: /lcehail
+    /lrcehappy: /lcehappy
+    /lrcelordv: /lcelordv
+    /lrcescroll: /lcescroll
+    /lrcesilence: /lcesilence
+    /lrcesurprised: /lcesurprised
+    /lrcewat: /lcewat

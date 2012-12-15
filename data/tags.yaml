@@ -1,0 +1,154 @@
+RootTags:
+- +canon
+- +oc
+- +nonpony
+- +pinkiepipes
+- +oldgen
+- +formatting
+# Special tags
+- +broken
+- +remove
+# Not exactly a "root tag", but the simplest way to silence complaints
+- +v
+
+ExclusiveTags:
+  +remove: []
+  +v: [+drop]
+
+HiddenTags:
+- +drop
+
+TagAliases:
+  +applejack: [+aj]
+  +fluttershy: [+fs]
+  +pinkiepie: [ +pp]
+  +rainbowdash: [+rbd, +rd]
+  +twilightsparkle: [+ts]
+
+  +applebloom: [+ab]
+  +sweetiebelle: [+sb]
+
+  +caketwins: [+poundcake, +pumpkincake]
+  +daringdo: [+dd]
+  +grannysmith: [+granny]
+  +nightmaremoon: [+nmm]
+  +princesscelestia: [+tia]
+  +shiningarmor: [+shiningarmour]
+  +vinylscratch: [+djpony, +djpon3]
+
+  +carrottop: [+goldenharvest]
+  +doctorwhooves: [+timeturner, +dw]
+  +lyra: [+heartstrings]
+  +soarin: [+soaren]
+
+  +ahuizotl: [+az]
+  +opalescence: [+cat]
+
+  +pinkamina: [+pinkamena, +diane]
+
+TagImplications:
+  # Special tags
+  +broken: [+remove]
+
+  # Mane 6
+  +applejack: [+canon, +mane, +pony]
+  +fluttershy: [+canon, +mane, +pony]
+  +pinkiepie: [+canon, +mane, +pony]
+  +rarity: [+canon, +mane, +pony]
+  +rainbowdash: [+canon, +mane, +pony]
+  +twilightsparkle: [+canon, +mane, +pony]
+
+  # CMC
+  +applebloom: [+canon, +cmc, +major, +pony]
+  +scootaloo: [+canon, +cmc, +major, +pony]
+  +sweetiebelle: [+canon, +cmc, +major, +pony]
+
+  # Significant canon characters
+  +angel: [+canon, +major]
+  +babseed: [+canon, +major, +pony]
+  +bigmac: [+canon, +major, +pony]
+  +braeburn: [+canon, +major, +pony]
+  +cadance: [+canon, +major, +pony]
+  +caketwins: [+canon, +major, +pony]
+  +cheerilee: [+canon, +major, +pony]
+  +queenchrysalis: [+canon, +major, +pony, +villian]
+  +cockatrice: [+canon, +major]
+  +crankydoodle: [+canon, +major]
+  +daringdo: [+canon, +major, +pony]
+  +derpy: [+canon, +major, +pony]
+  +diamondtiara: [+canon, +major, +pony]
+  +discord: [+canon, +major, +villian]
+  +fancypants: [+canon, +major, +pony]
+  +fleurdelis: [+canon, +major, +pony]
+  +flimandflam: [+canon, +major, +pony]
+  +gilda: [+canon, +major]
+  +grannysmith: [+canon, +major, +pony]
+  +gummy: [+canon, +major]
+  +hoitytoity: [+canon, +major, +pony]
+  +ironwill: [+canon, +major]
+  +kingsombra: [+canon, +major, +pony, +villian]
+  +maredowell: [+canon, +major, +pony]
+  +mayor: [+canon, +major, +pony]
+  +nightmaremoon: [+canon, +major, +pony, +villian]
+  +opalescence: [+canon, +major]
+  +owlowiscious: [+canon, +major]
+  +photofinish: [+canon, +major, +pony]
+  +pip: [+canon, +major, +pony]
+  +princesscelestia: [+canon, +major, +pony, +princess]
+  +princessluna: [+canon, +major, +pony, +nightmaremoon, +princess]
+  +shiningarmor: [+canon, +major, +pony]
+  +silverspoon: [+canon, +major, +pony]
+  +snipsandsnails: [+canon, +major, +pony]
+  +spike: [+canon, +major]
+  +spitfire: [+canon, +major, +pony, +wonderbolt]
+  +stevenmagnet: [+canon, +major]
+  +tank: [+canon, +major]
+  +trixie: [+canon, +major, +pony]
+  +twist: [+canon, +major, +pony]
+  +vinylscratch: [+canon, +major, +pony]
+  +zecora: [+canon, +major, +pony]
+
+  # Background characters
+  +ahuizotl: [+canon, +villian]
+  +beautybrass: [+canon, +bgpony, +pony]
+  +berrypunch: [+canon, +bgpony, +pony]
+  +bonbon: [+canon, +bgpony, +pony]
+  +carrottop: [+canon, +bgpony, +pony]
+  +cloudchaser: [+canon, +bgpony, +pony]
+  +colgate: [+canon, +bgpony, +pony]
+  +daisy: [+canon, +bgpony, +pony]
+  +dinky: [+canon, +bgpony, +pony]
+  +doctorwhooves: [+canon, +bgpony, +pony, +doctorwho]
+  +flitter: [+canon, +bgpony, +pony]
+  +lily: [+canon, +bgpony, +pony]
+  +lotus: [+canon, +bgpony, +pony]
+  +lyra: [+canon, +bgpony, +pony]
+  +medley: [+canon, +bgpony, +pony]
+  +octavia: [+canon, +bgpony, +pony]
+  +otherpony: [+canon, +bgpony, +pony]
+  +roseluck: [+canon, +bgpony, +pony]
+  +rubypinch: [+canon, +bgpony, +pony]
+  +soarin: [+canon, +bgpony, +pony, +wonderbolt]
+
+  # OC's
+  +apathia: [+oc, +ocpony]
+  +daylightdarkle: [+oc, +ocpony]
+  +discentia: [+oc, +ocpony]
+  +futashy: [+fluttershy, +oc, +ocpony]
+  +jappleack: [+applejack, +oc, +ocpony]
+  +karma: [+oc, +ocpony]
+  +raynestorm: [+oc, +ocpony]
+  +surprise: [+oc, +ocpony]
+  +wildfire: [+oc, +ocpony]
+
+  # Nonpony
+  +damon: [+nonpony]
+  +spiderman: [+nonpony]
+  +squidward: [+nonpony]
+
+  # Misc implications
+  +misc: [+canon]
+  +nsfw: [+questionable]
+  +ocpony: [+oc]
+  +smooze: [+oldgen]
+  +foodmane: [+mashup]
